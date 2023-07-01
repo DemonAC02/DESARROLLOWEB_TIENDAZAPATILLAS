@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>City Feet</title>
+    <link rel="icon" type="image/jpg" href="imagenes/Logo.jpg" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Proyecto.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/abb12678a2.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo"><a asp-controller="TiendaZapatillas" asp-action="index"><img src="~/imagenes/Logo.jpg" class="logo" /></a></div>
+        <input type="checkbox" id="toggle">
+
+        <label for="toggle"><a class="menu"><i class="fa-solid fa-bars" style="color: #ffffff;"></i></a></label>
+
+
+
+        <nav class="navigation">
+            <ul>
+                <li>
+                    <a asp-controller="Productos" asp-action="hombres">HOMBRE </a>
+
+                </li>
+
+                <li>
+                    <a asp-controller="Productos" asp-action="mujeres">MUJER </a>
+
+                </li>
+
+
+                <li><a asp-controller="Marcas" asp-action="index">MARCAS </a></li>
+                <li><a asp-controller="Usuario" asp-action="CerrarSesion"><i class="fa-solid fa-right-to-bracket" style="color: #ffffff;"></i></a></li>
+                <li><a asp-controller="Ventas" asp-action="ComprasUsu"> <i class="fa-solid fa-box" style="color: #ffffff;"></i></a></li>
+
+            </ul>
+
+
+        </nav>
+        <label><a class="carrito" asp-controller="TemporalCarrito" asp-action="vercarrito"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></a></label>
+
+    </header>
+    <br />
+    <br />
+
+
+    @RenderBody()
+
+
+    <br />
+    <br />
+    <footer class="pie">
+        <br />
+
+        <div class="section">
+            <div>
+                <h3><b>INFORMACION GENERAL</b></h3>
+                <a class="nav-link text-white" asp-controller="TiendaZapatillas" asp-action="sobrenosotros">Sobre Nosotros</a>
+                <a class="nav-link text-white" asp-controller="TiendaZapatillas" asp-action="politicaprivacidad">Politica de privacidad</a>
+                <a class="nav-link text-white" asp-controller="TiendaZapatillas" asp-action="politicadevoluciones">Politica de devoluciones</a>
+            </div>
+            <div>
+                <h3 class="text-white"><b>CONTACTO</b></h3>
+                <h6 class="text-white">TELEFONOS: +51 917520140    </h6>
+                <h6 class="text-white">
+                    CORREO: administracion@cityfeet.com
+                </h6>
+                <div class="redes">
+                    <a href="#" class="nav-link text-white fa fa-facebook"></a>
+                    <br />
+                    <a href="#" class="nav-link text-white fa fa-instagram"></a>
+                    <br />
+
+
+
+                </div>
+
+            </div>
+        </div>
+        <br />
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

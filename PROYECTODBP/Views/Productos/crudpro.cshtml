@@ -1,0 +1,43 @@
+﻿@model IEnumerable<PROYECTODBP.Models.Tbproducto>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<html>
+<head>
+
+</head>
+<body>
+    <a asp-controller="TiendaZapatillas" asp-action="mantenimiento"><i class="fa-solid fa-angles-left" style="color: #000000;"></i></a>
+    <a asp-action="NuevoPro">NUEVO PRODUCTO</a>
+    <h3 class="alert-primary">LISTADO DE PRODUCTOS</h3>
+
+
+    <table class="table table-bordered">
+        <tr>
+            <td>CODIGO</td>
+            <td>NOMBRE DEL PRODUCTO</td>
+            <td>PRECIO</td>
+            <td>STOCK</td>
+            <td>RUTA IMAGEN</td>
+            <td>Eliminar</td>
+            <td>Modificar</td>
+        </tr>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.IdProducto</td>
+                    <td>@item.Nombre</td>
+                    <td>@item.Precio</td>
+                    <td>@item.Stock</td>
+                    <td>@item.RutaImagen</td>
+                    <td><a asp-action="EliminarPro" asp-route-id="@item.IdProducto"><i class="fa-solid fa-trash" style="color: #000000;"></i></a></td>
+                    <td><a asp-action="ModificarPro" asp-route-id="@item.IdProducto"><i class="fa-solid fa-pen" style="color: #000000;"></i></a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

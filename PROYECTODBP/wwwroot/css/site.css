@@ -1,0 +1,182 @@
+* {
+    font-family: 'Agency FB';
+}
+
+    *,
+    *::before,
+    *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+body {
+    display: flex;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    flex-direction: column;
+    background-color: white;
+    margin-top: 40px;
+    color: black;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+.header {
+    position: fixed;
+    height: 80px;
+    top: -10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    left: 0;
+    right: 0;
+    background-color: #322424;
+    justify-content: space-between;
+    padding: 25px 6%;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+}
+
+.logo {
+    height: 50px;
+    width: 50px;
+}
+
+.navigation ul {
+    list-style: none;
+    border-radius: 15px;
+}
+
+.header .navigation ul li {
+    float: left;
+    position: relative;
+}
+
+    .header .navigation ul li a {
+        font-size: 18px;
+        color: white;
+        text-decoration: none;
+        border-radius: 15px;
+        padding: 20px;
+        display: block;
+        transition: all .5s ease;
+    }
+
+        .header .navigation ul li a:hover {
+            background-color: #355571;
+        }
+
+    .header .navigation ul li ul {
+        position: absolute;
+        right: 0;
+        width: 300px;
+        background-color: #473838;
+        display: none;
+    }
+
+        .header .navigation ul li ul li a {
+            font-size: 15px;
+            text-transform: capitalize;
+        }
+
+        .header .navigation ul li ul li {
+            width: 100%;
+        }
+
+    .header .navigation ul li:hover > ul {
+        display: initial;
+    }
+
+#toggle,
+.header label .menu {
+    display: none;
+    cursor: pointer;
+}
+
+.menu {
+    width: 100px;
+    height: 100px;
+}
+
+@media(max-width:1005px) {
+
+    .header label .menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+    }
+
+
+    .header {
+        padding: 20px 10%;
+    }
+
+        .header .navigation {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: dimgrey;
+            display: none;
+        }
+
+        .header ul {
+            border-radius: 0;
+        }
+
+        .header .navigation ul li {
+            width: 100%;
+        }
+
+            .header .navigation ul li a {
+                border-radius: 0;
+                padding: 8px 30px 8px 10%;
+            }
+
+            .header .navigation ul li ul {
+                position: relative;
+                width: 100%;
+                left: 0;
+            }
+
+    #toggle:checked ~ .navigation {
+        background-color: #355571;
+        transition: all .5s ease;
+        display: block;
+        text-align: center;
+    }
+}
+
+
+.pie {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    background-color: #322424;
+    width: 100%;
+    margin-top: auto;
+    padding: 10px;
+}
+
+.section {
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 40px;
+}
+
+    .section div {
+        display: flex;
+        flex-direction: column;
+    }
+
+div h3 {
+    color: white;
+    padding: 10px 0;
+}
+
+.redes {
+    margin: 10px;
+}

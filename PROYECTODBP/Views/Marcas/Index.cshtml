@@ -1,0 +1,64 @@
+﻿@model IEnumerable<PROYECTODBP.Models.Marca>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<html>
+<head>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .tdsmarcas {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .marcas {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #fff;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            color: #000;
+            font-size: 16px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+            .marcas:hover {
+                background-color: #007bff;
+                color: #fff;
+                cursor: pointer;
+            }
+    </style>
+</head>
+<body>
+    <div class="tdsmarcas">
+
+        @foreach (var item in Model)
+        {
+
+            <div class="marcas">
+
+                @item.Descripcion
+            </div>
+
+
+
+        }
+
+    </div>
+</body>
+</html>

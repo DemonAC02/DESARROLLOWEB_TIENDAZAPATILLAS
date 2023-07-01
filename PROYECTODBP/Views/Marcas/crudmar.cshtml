@@ -1,0 +1,37 @@
+﻿@model IEnumerable<PROYECTODBP.Models.Marca>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<html>
+<head>
+
+</head>
+<body>
+    <a asp-controller="TiendaZapatillas" asp-action="mantenimiento"><i class="fa-solid fa-angles-left" style="color: #000000;"></i></a>
+    <a asp-action="NuevoMar">NUEVA MARCA</a>
+    <h3 class="alert-primary">LISTADO DE MARCAS</h3>
+
+
+    <table class="table table-bordered">
+        <tr>
+            <td>CODIGO</td>
+            <td>NOMBRE DE LA MARCA</td>
+            <td>Eliminar</td>
+            <td>Modificar</td>
+        </tr>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.IdMarca</td>
+                    <td>@item.Descripcion</td>
+                    <td><a asp-action="EliminarMar" asp-route-id="@item.IdMarca"><i class="fa-solid fa-trash" style="color: #000000;"></i></a></td>
+                    <td><a asp-action="ModificarMar" asp-route-id="@item.IdMarca"><i class="fa-solid fa-pen" style="color: #000000;"></i></a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

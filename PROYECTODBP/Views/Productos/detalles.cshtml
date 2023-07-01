@@ -1,0 +1,147 @@
+﻿@model PROYECTODBP.Models.Tbproducto
+<
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .product-details {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .product-image {
+            width: 150px;
+            justify-content: center;
+            align-items: center;
+            height: 150px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .product-info {
+            flex-grow: 1;
+        }
+
+        h3 {
+            color: #333;
+            font-size: 24px;
+        }
+
+        .price {
+            color: #007bff;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .stock {
+            font-size: 14px;
+            color: #888;
+            margin-top: 10px;
+        }
+
+        form {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        label {
+            font-size: 16px;
+        }
+
+        input[type="number"] {
+            width: 100px;
+            height: 30px;
+            font-size: 16px;
+            padding: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+            input[type="submit"]:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text-center">
+            <div class="product-details">
+                <img class="product-image" src="@Model.RutaImagen">
+                <div class="product-info">
+                    <h3>@Model.Nombre</h3>
+                    <p class="price">S/@Model.Precio</p>
+                    <p>@Model.getNombreMarca()</p>
+                    <p class="stock">Stock restante: @Model.Stock</p>
+                </div>
+            </div>
+            <form id="addToCartForm" asp-controller="TemporalCarrito" asp-action="Index" method="post">
+                <input type="hidden" name="txtcodigo" value="@Model.IdProducto" />
+                <input type="hidden" name="txtnombre" value="@Model.Nombre" />
+                <input type="hidden" name="txtprecio" value="@Model.Precio" />
+                <label for="txtcantidad">Cantidad:</label>
+                <input type="number" name="txtcantidad" id="txtcantidad" value="1" min="1" />
+                <input type="submit" value="Agregar al Carrito" onclick="return validateStock()" />
+            </form>
+        </div>
+    </div>
+</body>
+
+<script>
+    window.onload = function () {
+        document.getElementById("txtcantidad").value = "1";
+    };
+
+    function validateStock() {
+        var stock = @Model.Stock;
+        var cantidadInput = document.getElementById("txtcantidad");
+        var cantidad = parseInt(cantidadInput.value);
+
+        if (cantidad <= 0 || isNaN(cantidad)) {
+            alert("Por favor, ingresa una cantidad válida.");
+            return false;
+        }
+
+        if (cantidad > stock) {
+            alert("No hay suficiente stock disponible.");
+            return false;
+        }
+
+        return true;
+    }
+</script>
+
+
+
+
+    

@@ -1,0 +1,99 @@
+﻿@model ResumenVenta
+<html>
+    <head>
+        <link rel="stylesheet" href="~/css/estilos4.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    </head>
+<body>
+    <a class="as" asp-controller="TemporalCarrito" asp-action="VerCarrito"><i class="fa-solid fa-angles-left" style="color: #000000;"></i></a>
+<h3>Resumen de la venta</h3>
+    <h4>ID del usuario: @ViewBag.idCli</h4>
+
+<table>
+    <tr>
+        <th>Código</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+        <th>Subtotal</th>
+    </tr>
+    @foreach (var item in Model.Carrito)
+    {
+        <tr>
+            <td>N°@item.codigo</td>
+            <td>@item.descripcion</td>
+            <td>S/ @item.precio</td>
+            <td>(@item.cantidad)</td>
+            <td>S/@(item.precio * item.cantidad)</td>
+        </tr>
+    }
+    <tr>
+        <td colspan="4" style="text-align: right;">Total:</td>
+        <td>S/@Model.Total</td>
+    </tr>
+</table>
+    
+<h3>Datos del usuario</h3>
+
+<form asp-controller="Ventas" asp-action="Confirmar" method="post">
+
+        <div class="inputGroup">
+            <input type="text" name="txtdireccion" required autocomplete="off">
+            <label for="Direccion">Direccion</label>
+        </div>
+        <div class="inputGroup">
+            <input type="text" name="txttelefono" required maxlength="9" size="9" autocomplete="off">
+            <label for="Telefono">Telefono</label>
+        </div>
+        <input type="hidden" name="txtidcliente" value="@ViewBag.idCli" />
+        <input type="hidden" name="txttotal" value="@Model.Total" />
+
+
+
+        <div class="container">
+            <div class="col1">
+                <div class="card">
+                    <div class="front">
+                        <div class="type">
+                            <img class="bankid" />
+                        </div>
+                        <span class="chip"></span>
+                        <span class="card_number">&#x25CF;&#x25CF;&#x25CF;&#x25CF; &#x25CF;&#x25CF;&#x25CF;&#x25CF; &#x25CF;&#x25CF;&#x25CF;&#x25CF; &#x25CF;&#x25CF;&#x25CF;&#x25CF; </span>
+                        <div class="date"><span class="date_value">MM / YYYY</span></div>
+                        <span class="fullname">NOMBRE   </span>
+                    </div>
+                    <div class="back">
+                        <div class="magnetic"></div>
+                        <div class="bar"></div>
+                        <span class="seccode">&#x25CF;&#x25CF;&#x25CF;</span>
+                        <span class="chip"></span><span class="disclaimer">This card is property of Random Bank of Random corporation. <br> If found please return to Random Bank of Random corporation - 21968 Paris, Verdi Street, 34 </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col2">
+                <label>NUMERO DE TARJETA</label>
+                <input class="number" type="text" ng-model="ncard" maxlength="19" onkeypress='return event.charCode >= 48 && event.charCode <= 57' />
+                <label>NOMBRE COMPLETO</label>
+                <input class="inputname" type="text" placeholder="" />
+                <label>FECHA DE EXPIRACION</label>
+                <input class="expire" type="text" placeholder="MM / YYYY" />
+                <label>NUMERO DE SEGURIDAD</label>
+                <input class="ccv" type="text" placeholder="CVC" maxlength="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57' />
+                <button class="buy"><i class="material-icons">lock</i> PAGAR</button>
+            </div>
+        </div>
+
+    
+
+    
+
+
+</form>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+
+    <script src="~/js/site.js"></script>
+</body>
+</html>

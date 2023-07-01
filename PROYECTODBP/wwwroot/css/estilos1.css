@@ -1,0 +1,39 @@
+﻿* {
+    font-family: 'Agency FB';
+    font-size: 20px;
+}
+
+body {
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+.titl {
+    font-size: 36px;
+    text-align: center;
+    border: groove;
+}
+
+.flex-fill {
+    display: flex;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.sobreus {
+    margin: 20px;
+    border: thick;
+    box-sizing: border-box;
+}
+
+.priva {
+    font-size: 15px;
+}
+
+.devo {
+    margin-right: 20px;
+    margin-left: 20px;
+}

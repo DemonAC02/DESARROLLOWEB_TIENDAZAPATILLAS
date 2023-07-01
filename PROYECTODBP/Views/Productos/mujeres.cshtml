@@ -1,0 +1,103 @@
+﻿@model IEnumerable<PROYECTODBP.Models.Tbproducto>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/StyleSheet.css" />
+     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin-top: 50px;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .productos-contenedor {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 20px;
+        }
+
+        .producto {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .producto-imagen {
+            width: 100%;
+            height: 200px; /* Ajusta la altura deseada */
+            object-fit: cover; /* Ajusta cómo se ajusta la imagen dentro del contenedor */
+            margin-bottom: 10px;
+        }
+
+        .producto-detalles {
+            margin-bottom: 10px;
+        }
+
+        .btn-group {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <label class="labe" for="search">Search</label>
+        <input required="" pattern=".*\S.*" type="search" class="input" id="search">
+        <span class="caret"></span>
+        <br />
+        <br />
+    </form>
+
+    <main>
+        <div class="productos-contenedor">
+            @foreach (var item in Model)
+            {
+                <div class="producto">
+                    <img class="producto-imagen" src="@item.RutaImagen" alt="">
+                    <div class="producto-detalles">
+                        <p>@item.Nombre</p>
+                        <p>S/ @item.Precio</p>
+                        <p>N° @item.IdProducto</p>
+                    </div>
+                    <div class="btn-group d-flex align-items-center">
+                        <a asp-action="Detalles" asp-route-id="@item.IdProducto" class="btn btn-primary">Ir a detalles</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </main>
+
+    <script>
+        const productosContenedor = document.querySelector('.productos-contenedor');
+        const searchInput = document.getElementById('search');
+
+        function searchProducts() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const productos = productosContenedor.getElementsByClassName('producto');
+
+            Array.from(productos).forEach((producto) => {
+                const nombreProducto = producto.querySelector('.producto-detalles p:first-child').textContent.toLowerCase();
+
+                if (nombreProducto.includes(searchTerm)) {
+                    producto.style.display = 'block';
+                } else {
+                    producto.style.display = 'none';
+                }
+            });
+        }
+
+        searchInput.addEventListener('input', searchProducts);
+    </script>
+</body>
+</html>

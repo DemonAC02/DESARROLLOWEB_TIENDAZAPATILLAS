@@ -1,0 +1,31 @@
+﻿@model IEnumerable<PROYECTODBP.Models.DetalleVenta>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<html>
+<head>
+</head>
+<body>
+    <h3 class="alert-primary">Listado de detalles</h3>
+    <table class="table table-bordered">
+        <tr>
+            <td>Producto </td>
+            <td>Cantidad</td>
+            <td>Total</td>
+        </tr>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.getNombreProd()</td>
+                    <td>@item.Cantidad</td>
+                    <td>@item.Total</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
